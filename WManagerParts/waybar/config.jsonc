@@ -1,0 +1,85 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 0,
+  "spacing": 0,
+  "reload_style_on_change": true, // Maybe Turn OFF (change css on the spot)
+
+  "custom/separator": {
+    "format": "::", //🌙
+    "interval": "once",
+    "tooltip": false,
+  },
+
+  // Choose the order of the modules
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
+  "modules-center": ["sway/window"],
+  "modules-right": [
+    "tray",
+    "idle_inhibitor",
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "sway/language",
+    "clock"
+    // "custom/power"
+  ],
+
+  "sway/window": {
+    "max-length": 50,
+  },
+  "tray": {
+    "spacing": 10,
+    "tooltip": false,
+  },
+  "cpu": {
+    "format": "CPU {usage}%",
+    "interval": 3,
+    "states": {
+      "critical": 90,
+    },
+  },
+  "memory": {
+    "format": "MEM {percentage}%",
+    "interval": 3,
+    "states": {
+      "critical": 80,
+    },
+  },
+  "pulseaudio": {
+    "format": "VOL {volume}%",
+    "format-muted": "VOL --",
+    "on-click": "pkill pavucontrol || pavucontrol"
+  },  
+  "clock": {
+    "format": "{:%a %d %b  %H:%M:%S}",
+  },
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": "",
+    },
+  },
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>",
+  },
+  "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": ["", ""],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}",
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": "",
+    },
+  },
+}
