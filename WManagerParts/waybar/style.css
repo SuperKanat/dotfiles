@@ -16,15 +16,6 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
 window#waybar.termite {
     background-color: #3F3F3F;
 }
@@ -79,9 +70,10 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
-#cpu, #memory, #network, #pulseaudio, #clock, #custom-pomodoro, #custom-power, #idle_inhibitor{
+#cpu, #memory, #network, #pulseaudio, #clock, #custom-pomodoro, #custom-power, #idle_inhibitor, #language{
   padding: 0 10px;
-  color: #ebdbb2;  border-left: 1px solid rgba(200, 184, 154, 0.08);
+  color: #ebdbb2;  
+  border-left: 1px solid;
   letter-spacing: 1px;
 }
 #window,
@@ -115,27 +107,7 @@ label:focus {
 
 
 #language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+	min-width: 24px;
 }
 
 #scratchpad {
