@@ -26,15 +26,11 @@ output * bg ~/.config/sway/wallpapers/Barotrauma_Wallpaper_08.png fill
     output DP-1 mode 2560x1440@75Hz position 0,0 scale 1.15
     output HDMI-A-1 mode 1920x1080@60Hz position 2226,0
     workspace 1 output DP-1
-# You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
-#
-# Example configuration:
-#
     exec swayidle -w \
     	timeout 300 'swaylock -f -c 000000' \
-        timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+        timeout 500 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -42,21 +38,10 @@ output * bg ~/.config/sway/wallpapers/Barotrauma_Wallpaper_08.png fill
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
    input type:keyboard {
        xkb_layout "us,ru"
        xkb_options "grp:win_space_toggle"
    }
-#
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
 ### Key bindings
@@ -70,9 +55,9 @@ output * bg ~/.config/sway/wallpapers/Barotrauma_Wallpaper_08.png fill
     # Kill focused window
     bindsym $mod+Shift+q kill
 
-    # Start your launcher
+    # Start your launche
     # bindsym $mod+d exec $menu
-    bindsym $mod+d exec --no-startup-id rofi -modes "window,drun,combi" -show combi --window-title "run"
+    bindsym $mod+d exec --no-startup-id rofi -show combi -modes "combi,run,ssh" -combi-modes "window,drun" --window-title "run" 
     # bindsym $mod+Shift+d exec --no-startup-id prime-run rofi -modes "window,drun,combi" -show combi --window-title "prime-run"
 
 
@@ -219,17 +204,18 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+	swaybar_command waybar
 }
+
+
+
+for_window {
+  [app_id="pavucontrol"] floating enable
+  [title="game-*"] floating enable, resize set 2560 1440
+}
+
+
+default_border pixel 2
+default_floating_border pixel 2
 
 include /etc/sway/config.d/*
